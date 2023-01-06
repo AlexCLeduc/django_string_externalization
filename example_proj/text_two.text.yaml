@@ -1,0 +1,3 @@
+txt_with_args:
+  en: Hello %(firstname)s %(lastname)s
+  fr: Bonjour %(firstname)s %(lastname)s

@@ -1,0 +1,11 @@
+# dev dependencies
+Django==4.0.0
+ipython==7.2.0
+twine==4.0.1
+
+# dependency for watching file changes
+watchdog==2.1
+
+# dependencies for markdown and html sanitization
+mistune==2.0.4
+bleach==3.0.2

@@ -1,0 +1,16 @@
+a_sentence:
+  en: The current fiscal year is %(current_fiscal_year)s.
+  fr: L'exercise courrant est %(current_fiscal_year)s.
+
+
+example_with_script_tag:
+  en: <script>console.log("Hacked!");</script>
+  fr: 
+
+example_with_input:
+  en: The input is %(input)s
+  fr: 
+
+example_with_markdown:
+  md: True
+  en: I contain **bolds** and _italics_
