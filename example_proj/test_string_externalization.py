@@ -45,3 +45,9 @@ class TestStringExternalization(unittest.TestCase):
         rendered_str =  '<p>I contain <strong>bolds</strong> and <em>italics</em></p>\n'
         self.assertEqual(tm("example_with_markdown"),rendered_str)
 
+
+    def test_tm_inputs(self):
+        # test that input that are themselves tm() objs dont cause errors (regression)
+        firstname = tm("james")
+        lastname = tm("bond")
+        self.assertEqual(tm("txt_with_args",extra_keys={"firstname":firstname,"lastname":lastname}),"Hello James Bond")

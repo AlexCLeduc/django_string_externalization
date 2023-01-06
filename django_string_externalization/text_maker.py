@@ -11,6 +11,10 @@ from .html_util import markdown, sanitize_html
 from .text_entry_manager import TextEntryManager
 
 
+def force_str(str_or_proxy):
+    return str_or_proxy + ""
+
+
 class TextMakerError(Exception):
     pass
 
@@ -49,7 +53,9 @@ class TextMakerCreator:
         global_keys = self.global_keys[lang]
 
         if sanitize_input is True:
-            extra_keys = {k: self.sanitize_html(v) for k, v in extra_keys.items()}
+            extra_keys = {
+                k: self.sanitize_html(force_str(v)) for k, v in extra_keys.items()
+            }
 
         if key in global_keys:
             return global_keys[key]
@@ -91,13 +97,14 @@ class TextMakerCreator:
 
     @staticmethod
     def sanitize_html(text):
-        """ can override w/ custom html sanitizer"""
+        """can override w/ custom html sanitizer"""
         return sanitize_html(text)
 
     @staticmethod
     def render_markdown(text):
-        """ can override w/ custom markdown renderer"""
+        """can override w/ custom markdown renderer"""
         return markdown(text)
+
 
 class WatchingTextMakerCreator(TextMakerCreator):
     def __init__(self, global_keys, text_files):
