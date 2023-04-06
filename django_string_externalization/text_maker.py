@@ -27,6 +27,10 @@ class TextMakerCreator:
         self.entry_manager.load()
         self.global_keys = global_keys
 
+    def get_language_code(self):
+        # when called from a non-localized URL (e.g. admin), get_language() is None
+        return get_language() or "en"
+
     @staticmethod
     def validate_text_files(text_files):
         for path in text_files:
@@ -47,9 +51,7 @@ class TextMakerCreator:
         sanitize_output=True,
         should_mark_safe=True,
     ):
-        lang = (
-            get_language() or "en"
-        )  # when called from a non-localized URL (e.g. admin), get_language() is None
+        lang = self.get_language_code() 
         global_keys = self.global_keys[lang]
 
         if sanitize_input is True:
